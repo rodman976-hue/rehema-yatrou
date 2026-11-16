@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invitation — Rehema Yatrou</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="logo.jpg">
+<link rel="stylesheet" href="style.css">
+<style>
+  .bouton { display: block; text-align: center; background: var(--vert); color: #FFF8E8; text-decoration: none; font: 600 17px Arial, Helvetica, sans-serif; padding: 16px; border-radius: 16px; margin: 22px 0 12px; }
+  .code { font: 600 15px 'Courier New', monospace; background: #FFFDF8; border: 1px dashed var(--or); border-radius: 12px; padding: 12px; word-break: break-all; text-align: center; }
+  .copier { display: block; margin: 10px auto 0; background: none; border: 1px solid var(--vert); color: var(--vert); border-radius: 12px; padding: 9px 16px; font: 14px Arial, Helvetica, sans-serif; }
+</style>
+</head>
+<body>
+<header><a href="index.html"><div class="marque">REHEMA YATROU</div><div class="devise">La Rahma au cœur de notre foyer</div></a></header>
+<main class="hero">
+  <img src="logo.jpg" alt="Logo de Rehema Yatrou">
+  <h1>Vous êtes invité·e à rejoindre un espace Rehema Yatrou 🤍</h1>
+  <p class="accroche">Votre conjoint vous attend dans votre espace à deux.</p>
+  <a id="ouvrir" class="bouton" href="#">Ouvrir l’invitation dans l’application</a>
+  <div id="bloc-code">
+    <p class="note">Si l’application ne s’ouvre pas : ouvrez Rehema Yatrou, allez dans <strong>Couple → Rejoindre</strong> et collez ce code :</p>
+    <div class="code" id="code"></div>
+    <button class="copier" id="copier" type="button">Copier le code</button>
+  </div>
+  <p class="note">Vous n’avez pas encore l’application ? Demandez le lien d’installation à la personne qui vous a invité·e. L’application arrive bientôt sur Google Play.</p>
+</main>
+<footer>© 2026 DIGITALYLANG SOLUTIONS · <a href="confidentialite.html">Politique de confidentialité</a></footer>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var code = (params.get('code') || '').trim();
+    var valide = /^[A-Za-z0-9-]{6,120}$/.test(code);
+    var bouton = document.getElementById('ouvrir');
+    if (!valide) {
+      bouton.style.display = 'none';
+      document.getElementById('bloc-code').style.display = 'none';
+      document.querySelector('h1').textContent = 'Lien d’invitation incomplet';
+      document.querySelector('.accroche').textContent = 'Demandez à votre conjoint de vous renvoyer l’invitation depuis l’application (onglet Couple → Inviter).';
+      return;
+    }
+    var schema = 'rehema://invite?code=' + encodeURIComponent(code);
+    var android = /Android/i.test(navigator.userAgent);
+    bouton.href = android
+      ? 'intent://invite?code=' + encodeURIComponent(code) + '#Intent;scheme=rehema;package=com.rehemayatrou.app;end'
+      : schema;
+    document.getElementById('code').textContent = code;
+    document.getElementById('copier').addEventListener('click', function () {
+      var b = this;
+      (navigator.clipboard ? navigator.clipboard.writeText(code) : Promise.reject()).then(function () { b.textContent = 'Code copié ✓'; }, function () { b.textContent = 'Sélectionnez le code ci-dessus pour le copier'; });
+    });
+  })();
+</script>
+</body>
+</html>
