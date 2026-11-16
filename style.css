@@ -1,0 +1,25 @@
+:root { --vert: #1F4D3A; --sauge: #6B8F71; --or: #D4AF7C; --ivoire: #F8F5ED; --encre: #1E2B24; --gris: #5E6A62; --ligne: #E6DFCF; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ivoire); color: var(--encre); font: 17px/1.65 Georgia, 'Times New Roman', serif; }
+a { color: var(--vert); }
+header { background: var(--vert); color: #FFF8E8; text-align: center; padding: 18px 16px; }
+header a { color: #FFF8E8; text-decoration: none; }
+header .marque { font: 600 13px/1 Arial, Helvetica, sans-serif; letter-spacing: 4px; color: var(--or); }
+header .devise { font-style: italic; font-size: 14px; color: #DCE3D2; margin-top: 6px; }
+nav { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; padding: 12px; font: 14px Arial, Helvetica, sans-serif; border-bottom: 1px solid var(--ligne); background: #FFFDF8; }
+nav a { text-decoration: none; }
+main { max-width: 760px; margin: 0 auto; padding: 32px 20px 48px; }
+h1 { font-size: 34px; line-height: 1.2; color: var(--vert); margin: 0 0 12px; }
+h2 { font-size: 23px; color: var(--vert); margin: 34px 0 8px; }
+.hero { text-align: center; }
+.hero img { width: 210px; max-width: 60%; border-radius: 28px; }
+.hero p.accroche { font-size: 20px; color: var(--gris); }
+.cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 26px; }
+.carte { background: #FFFDF8; border: 1px solid var(--ligne); border-radius: 18px; padding: 18px; }
+.carte h3 { margin: 0 0 6px; font-size: 18px; color: var(--vert); }
+.carte p { margin: 0; font: 15px/1.55 Arial, Helvetica, sans-serif; color: var(--gris); }
+.encart { background: var(--vert); color: #FFF8E8; border-radius: 18px; padding: 18px 20px; margin: 22px 0; }
+.encart a { color: var(--or); }
+.note { font: 14px/1.6 Arial, Helvetica, sans-serif; color: var(--gris); }
+.etapes li { margin-bottom: 8px; }
+footer { border-top: 1px solid var(--ligne); text-align: center; padding: 22px 16px; font: 13px/1.7 Arial, Helvetica, sans-serif; color: var(--gris); }
